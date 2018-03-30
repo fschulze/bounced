@@ -1,0 +1,7 @@
+/.pytest_cache/
+/.tox/
+/bin/
+/include/
+/lib/
+/pip-selfcheck.json
+/prof/

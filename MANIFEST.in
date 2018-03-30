@@ -1,0 +1,2 @@
+include *.ini
+recursive-include src/bounced/tests *.eml *.py
