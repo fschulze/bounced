@@ -12,3 +12,12 @@ The API of `bounce_email`_ isn't Pythonic and inefficient for several use cases,
 
 .. _flufl.bounce: https://pypi.org/project/flufl.bounce/
 .. _bounce_email: https://pypi.org/project/bounce_email/
+
+Changelog
+=========
+
+0.1.0 - 2018-03-30
+------------------
+
+* Initial release.
+  [fschulze]
