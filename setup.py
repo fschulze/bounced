@@ -1,10 +1,16 @@
 from setuptools import setup
+import os
+
+
+README = open(os.path.abspath('README.rst')).read()
 
 
 setup(
     name='bounced',
     version='0.1.0.dev0',
     license='MIT',
+    description='A library to determine info on bounced email messages',
+    long_description="\n\n".join([README]),
     url='https://github.com/fschulze/bounced',
     classifiers=[
         "Development Status :: 4 - Beta",
