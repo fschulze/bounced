@@ -23,7 +23,9 @@ def expected(request):
 def pytest_generate_tests(metafunc):
     if 'bounce_fn' in metafunc.fixturenames:
         paths = [
-            'tests/flufl_bounce']
+            'tests/flufl_bounce',
+            'tests/bounce_email/bounces',
+            'tests/bounce_email/non_bounces']
         bounce_fns = []
         for path in paths:
             bounce_fns.extend(
@@ -41,12 +43,14 @@ def get_email(fn):
 
 @pytest.mark.expected({
     'aol_01': None,
+    'bounce-auto-respond': None,
     'bounce_01': None, 'bounce_02': None, 'bounce_03': None,
     'dumbass_01': None,
     'exim_01': None,
     'groupwise_01': None, 'groupwise_02': None, 'groupwise_03': None,
     'hotpop_01': None,
     'llnl_01': None,
+    'malformed_bounce_01': None,
     'microsoft_01': None, 'microsoft_02': None, 'microsoft_03': None,
     'newmailru_01': None,
     'postfix_01': None, 'postfix_02': None, 'postfix_03': None, 'postfix_04': None, 'postfix_05': None,
@@ -55,6 +59,10 @@ def get_email(fn):
     'simple_01': None, 'simple_02': None, 'simple_03': None, 'simple_04': None, 'simple_05': None, 'simple_06': None, 'simple_07': None, 'simple_08': None, 'simple_09': None, 'simple_10': None, 'simple_11': None, 'simple_12': None, 'simple_14': None, 'simple_15': None, 'simple_16': None, 'simple_17': None, 'simple_18': None, 'simple_19': None, 'simple_20': None, 'simple_21': None, 'simple_22': None, 'simple_23': None, 'simple_24': None, 'simple_25': None, 'simple_26': None, 'simple_27': None, 'simple_28': None, 'simple_29': None, 'simple_30': None, 'simple_32': None, 'simple_33': None, 'simple_34': None, 'simple_35': None, 'simple_36': None, 'simple_37': None, 'simple_38': None, 'simple_39': None, 'simple_40': None, 'simple_41': None,
     'sina_01': None,
     'smtp32_01': None, 'smtp32_02': None, 'smtp32_03': None, 'smtp32_04': None, 'smtp32_05': None, 'smtp32_06': None, 'smtp32_07': None,
+    'tt_bounce_01': None, 'tt_bounce_02': None, 'tt_bounce_06': None, 'tt_bounce_08': None, 'tt_bounce_09': None, 'tt_bounce_11': None, 'tt_bounce_12_soft': None, 'tt_bounce_14': None, 'tt_bounce_17': None, 'tt_bounce_18': None, 'tt_bounce_19': None, 'tt_bounce_20': None, 'tt_bounce_21': None, 'tt_bounce_22': None, 'tt_bounce_25': None,
+    'undeliverable_gmail': None,
+    'unknown_code_bounce_01': None,
+    'tt_1234210666': None, 'tt_1234211024': None, 'tt_1234241664': None,
     'yahoo_01': None, 'yahoo_02': None, 'yahoo_03': None, 'yahoo_04': None, 'yahoo_05': None, 'yahoo_06': None, 'yahoo_07': None, 'yahoo_08': None, 'yahoo_09': None, 'yahoo_10': None, 'yahoo_11': None,
     'yale_01': None})
 def test_get_delivery_status(bounce_fn, expected):
@@ -140,15 +148,97 @@ def test_get_delivery_status(bounce_fn, expected):
         action='delayed',
         status='430',
         reporting_mta='be37.mail.saunalahti.fi')],
+    'tt_1234175799': [Bounce(
+        ('', 'agris.ameriks@amerimailzzz.lv'),
+        status='544',
+        reporting_mta='Albanis-3.local')],
+    'tt_1234177688': [Bounce(
+        ('', 'aaaaagggrrriiiizz@inbox.lv'),
+        status='554',
+        reporting_mta='Albanis-3.local')],
+    'tt_1234210655': [Bounce(
+        ('', 'this_doesnotexistinAAc@accenture.com'),
+        status='511',
+        reporting_mta='mtahm1100.accenture.com')],
+    'tt_1234211357': [Bounce(
+        ('', 'agris.ameriksNEEXISTEE@gmail.com'),
+        status='511',
+        reporting_mta='Albanis-3.local')],
+    'tt_1234211929': [Bounce(
+        ('', 'jekaterina@tv5.lv'),
+        status='523',
+        reporting_mta='blackbird.grafton.lv')],
+    'tt_1234211931': [Bounce(
+        ('', 'info.rietumuradio.lv@mail.studio7.lv'),
+        status='500',
+        reporting_mta='mail.studio7pro.lv')],
+    'tt_1234211932': [Bounce(
+        ('', 'dace.balode@rigasvilni.lv'),
+        status='550',
+        reporting_mta='Albanis-3.local')],
+    'tt_1234241665': [Bounce(
+        ('', 'annas@sfl.lv'),
+        status='550',
+        reporting_mta='Albanis-3.local')],
+    'tt_1234285532': [Bounce(
+        ('', 'doesntexistthisemaill@yahoo.com'),
+        status='554',
+        reporting_mta='Albanis-3.local')],
+    'tt_1234285668': [Bounce(
+        ('', 'agrisa@one.lv'),
+        status='552',
+        reporting_mta='Albanis-3.local')],
+    'tt_bounce_03': [Bounce(
+        ('', 'agrisa@apollo.lv'),
+        status='500',
+        reporting_mta='apollo.lv')],
+    'tt_bounce_04': [Bounce(
+        ('', 'agrisa@apollo.lv'),
+        status='500',
+        reporting_mta='apollo.lv')],
+    'tt_bounce_05': [Bounce(
+        ('', 'evor@apollo.lv'),
+        status='500',
+        reporting_mta='smtp2.apollo.lv')],
+    'tt_bounce_07': [Bounce(
+        ('', 'ilona.kalnina@citrus.lv'),
+        status='500',
+        reporting_mta='avalon.telekom.lv')],
+    'tt_bounce_10': [Bounce(
+        ('', 'info.rietumuradio.lv@mail.studio7.lv'),
+        status='400',
+        reporting_mta='mail.studio7.lv')],
+    'tt_bounce_13': [Bounce(
+        ('', 'ilzeB@lvaei.lv'),
+        status='522',
+        reporting_mta='LVAEI-EXCH.lvaei.lv')],
+    'tt_bounce_15': [Bounce(
+        ('', 'info@rimibaltic.com'),
+        status='500',
+        reporting_mta='rimilt01.rimi.lan')],
+    'tt_bounce_16': [Bounce(
+        ('', 'jekaterina@tv5.lv'),
+        status='523',
+        reporting_mta='blackbird.grafton.lv')],
+    'tt_bounce_23': [Bounce(
+        ('', 'Rihards_Freimanis@exigengroup.com'),
+        status='550',
+        reporting_mta='pnew.exigengroup.lv')],
+    'tt_bounce_24': [Bounce(
+        ('', 'customer.testemail@test-receive-domain.se'),
+        status='550',
+        reporting_mta='test-receive-domain.se')],
     'netscape_01': set(),
     'simple_13': set(), 'simple_31': set(),
     'aol_01': None,
+    'bounce-auto-respond': None,
     'bounce_01': None, 'bounce_02': None, 'bounce_03': None,
     'dumbass_01': None,
     'exim_01': None,
     'groupwise_01': None, 'groupwise_02': None, 'groupwise_03': None,
     'hotpop_01': None,
     'llnl_01': None,
+    'malformed_bounce_01': None,
     'microsoft_01': None, 'microsoft_02': None, 'microsoft_03': None,
     'newmailru_01': None,
     'postfix_01': None, 'postfix_02': None, 'postfix_03': None, 'postfix_04': None, 'postfix_05': None,
@@ -157,6 +247,10 @@ def test_get_delivery_status(bounce_fn, expected):
     'simple_01': None, 'simple_02': None, 'simple_03': None, 'simple_04': None, 'simple_05': None, 'simple_06': None, 'simple_07': None, 'simple_08': None, 'simple_09': None, 'simple_10': None, 'simple_11': None, 'simple_12': None, 'simple_14': None, 'simple_15': None, 'simple_16': None, 'simple_17': None, 'simple_18': None, 'simple_19': None, 'simple_20': None, 'simple_21': None, 'simple_22': None, 'simple_23': None, 'simple_24': None, 'simple_25': None, 'simple_26': None, 'simple_27': None, 'simple_28': None, 'simple_29': None, 'simple_30': None, 'simple_32': None, 'simple_33': None, 'simple_34': None, 'simple_35': None, 'simple_36': None, 'simple_37': None, 'simple_38': None, 'simple_39': None, 'simple_40': None, 'simple_41': None,
     'sina_01': None,
     'smtp32_01': None, 'smtp32_02': None, 'smtp32_03': None, 'smtp32_04': None, 'smtp32_05': None, 'smtp32_06': None, 'smtp32_07': None,
+    'tt_bounce_01': None, 'tt_bounce_02': None, 'tt_bounce_06': None, 'tt_bounce_08': None, 'tt_bounce_09': None, 'tt_bounce_11': None, 'tt_bounce_12_soft': None, 'tt_bounce_14': None, 'tt_bounce_17': None, 'tt_bounce_18': None, 'tt_bounce_19': None, 'tt_bounce_20': None, 'tt_bounce_21': None, 'tt_bounce_22': None, 'tt_bounce_25': None,
+    'undeliverable_gmail': None,
+    'unknown_code_bounce_01': None,
+    'tt_1234210666': None, 'tt_1234211024': None, 'tt_1234241664': None,
     'yahoo_01': None, 'yahoo_02': None, 'yahoo_03': None, 'yahoo_04': None, 'yahoo_05': None, 'yahoo_06': None, 'yahoo_07': None, 'yahoo_08': None, 'yahoo_09': None, 'yahoo_10': None, 'yahoo_11': None,
     'yale_01': None})
 def test_bounces(bounce_fn, expected):

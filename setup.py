@@ -19,6 +19,8 @@ setup(
     package_data={
         'bounced': [
             'tests/*.py',
-            'tests/flufl_bounce/*.eml']},
+            'tests/flufl_bounce/*.eml',
+            'tests/bounce_email/bounces/*.eml',
+            'tests/bounce_email/non_bounces/*.eml']},
     packages=['bounced'],
     package_dir={'': 'src'})

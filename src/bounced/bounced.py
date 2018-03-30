@@ -72,6 +72,10 @@ def get_recipient(recipient):
         if 'rfc-822' in parts:
             return email.utils.parseaddr(parts['rfc-822'].replace('(a)', '@'))
         return
+    elif len(addr_parts) == 2 and addr_parts[0].lower() == 'system':
+        if addr_parts[1] == '<>':
+            return
+        raise ValueError("Unknown kind of Final-Recipient in DSN field: %s" % recipient)
     elif len(addr_parts) == 2:
         raise ValueError("Unknown kind of Final-Recipient in DSN field: %s" % recipient)
     raise ValueError("Invalid Final-Recipient in DSN field: %s" % recipient)
