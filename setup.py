@@ -7,7 +7,7 @@ README = open(os.path.abspath('README.rst')).read()
 
 setup(
     name='bounced',
-    version='0.1.0',
+    version='0.2.0.dev0',
     license='MIT',
     description='A library to determine info on bounced email messages',
     long_description="\n\n".join([README]),
@@ -25,6 +25,7 @@ setup(
     package_data={
         'bounced': [
             'tests/*.py',
+            'tests/bounces/*.eml',
             'tests/flufl_bounce/*.eml',
             'tests/bounce_email/bounces/*.eml',
             'tests/bounce_email/non_bounces/*.eml']},

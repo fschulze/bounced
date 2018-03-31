@@ -1,0 +1,126 @@
+Delivery-date: Mon, 04 Dec 2017 09:49:39 +0100
+Received: from [192.3.4.5] (helo=mx10.ispgateway.de)
+    by mailcluster3-6.ispgateway.de with esmtp (Exim 4.89)
+    id 1eLmRX-0000vu-6b; Mon, 04 Dec 2017 09:49:39 +0100
+Return-path: <>
+X-Envelope-to: sender@example.com
+Received: from [192.2.3.4] (helo=smtp-in.mail-gw.net)
+    by mx10.ispgateway.de with esmtps (TLSv1.2:ECDHE-RSA-AES128-GCM-SHA256:128)
+    (Exim 4.89)
+    id 1eLmRW-00064J-Ni
+    for sender@example.com; Mon, 04 Dec 2017 09:49:39 +0100
+X-Default-Received-SPF: pass (skip=forwardok (res=PASS)) x-ip-name=10.10.30.3;
+Received: from mail-gw.net (unverified [10.10.30.3]) 
+    by gw-mfe003.mail.gw.net (SurgeMail 7.1e) with ESMTP id 7462589-1764164 
+    for <sender@example.com>; Mon, 04 Dec 2017 09:49:38 +0100
+Subject:  Ihre Mail konnte nicht zugestellt werden (Subject Failed)!: =?utf-8?q?Fake_Subject?=
+From: <MAILER-DAEMON@mail-gw.net>
+To: <sender@example.com>
+Date: Mon, 04 Dec 2017 09:49:35 +0100
+Message-ID: <receipt-122794689@mfe003.mail-gw.net>
+X-MAPI-Message-Class: REPORT.IPM.Note.NDR
+MIME-Version: 1.0
+Content-Type: multipart/report; report-type="delivery-status"; boundary="_===122794689====mfe003.mail-gw.net===_"
+X-Originating-IP: 10.10.30.3
+X-Country: code=ZZ country="Reserved" ip=10.10.30.3
+X-Spam-Checker-Version: vimus Spamcheck Service
+X-Tff-Cgpsa-Version: 1.5
+X-Tff-Cgpsa-Filter: Scanned
+X-SpamDetect: : 0.839000 From: does not include a real name=0.8
+X-NotAscii: charset=utf-8
+X-Mash: sameip
+X-LangGuess: English
+X-IP-stats: Incoming Outgoing Last 0, First 1047, in=1150586, out=5174345, spam=0 Known=true ip=10.10.30.3
+X-Received-SPF: pass ( mx10.ispgateway.de: domain of smtp-in.mail-gw.net designates 192.2.3.4 as permitted sender )
+X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
+    spamfilter01.ispgateway.de
+X-Spam-Level: 
+X-Spam-Status: No, hits=0.0 required=9999.0 tests=BAYES_50 autolearn=disabled
+    version=3.4.0
+X-Spam-CMAETAG: v=2.2 cv=UawhcOaN c=1 sm=1 tr=0
+    a=hTfivHWyzpvpBGaCs5Z5jw==:17 a=WNwByWWVT3sA:10 a=ocR9PWop10UA:10
+    a=1Ib8I-6a4m4AAd2ijmQA:9 a=QEXdDO2ut3YA:10 a=3GRKtyAs29AA:10
+    a=BkWVlcigAAAA:8 a=dukIYL89h5fGyXdvoZIA:9 a=VAQzetl8AAAA:8
+    a=8zXnCMOTAAAA:8 a=8sUn3h9eAAAA:8 a=J2wvy-iJAAAA:8
+    a=ll-PCIzfwgncZL9I1mEA:9 a=iJwWXQGIVbwA:10 a=QvXJs-RZRtb1NZAgM5Lr:22
+    a=BQLtEgsGayPRos4u5on3:22 a=RcQ3ebvAU_UZmIiWfFhS:22
+    a=yJKStjXG0rcGxMj0kewa:22 a=v1fqrcM3GP97MsKNhEMX:22
+X-Spam-CMAECATEGORY: 
+X-Spam-CMAESUBCATEGORY: 
+X-Spam-CMAESCORE: 
+
+
+--_===122794689====mfe003.mail-gw.net===_
+Content-Type: text/plain; charset="utf-8"
+
+Fehler bei der Auslieferung Ihrer Nachricht an  'recipient@example.com'
+LOCAL module(account recipient@example.com) reports:
+ account is full (quota exceeded)
+
+
+--_===122794689====mfe003.mail-gw.net===_
+Content-Type: message/delivery-status
+
+Reporting-MTA: dns; mfe003.mail-gw.net
+
+Original-Recipient: rfc822;<recipient@example.com>
+Final-Recipient: LOCAL;<recipient@example.com>
+Action: failed
+Status: 4.0.0
+
+--_===122794689====mfe003.mail-gw.net===_
+Content-Type: text/rfc822-headers
+
+Received: from [10.10.30.13] (HELO smtp-in.mail-gw.net)
+  by mfe003.mail-gw.net (CommuniGate Pro SMTP 4.2.10)
+  with ESMTP id 122769889 for recipient@example.com; Fri, 01 Dec 2017 09:49:35 +0100
+Received-SPF: pass (Cache: Last token {include:_spf.strato.com} (res=PASS)) client-ip=192.1.2.3; envelope-from=<sender@example.com>; x-ip-name=mo4-p05-ob.smtp.rzone.de;
+Received: from mo4-p05-ob.smtp.rzone.de (unverified [192.1.2.3]) 
+    by gw-mfe003.mail.gw.net (SurgeMail 7.1e) with ESMTP (TLS) id 7438922-1764164 
+    for <recipient@example.com>; Fri, 01 Dec 2017 09:49:35 +0100
+Return-Path: <sender@example.com>
+X-Verify-SMTP: Host 192.1.2.3 sending to us was not listening
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; t=1512118172;
+    s=domk; d=wetriba.com;
+    h=Reply-To:Date:Message-Id:Subject:To:From:Content-Transfer-Encoding:
+    MIME-Version:Content-Type:X-RZG-CLASS-ID:X-RZG-AUTH:Accept-Language:
+    Auto-Submitted:Cc:Date:From:Message-ID:References:Reply-To:Resent-Cc:
+    Resent-Date:Resent-From:Resent-To:Sender:Subject:To:
+    Content-Alternative:Content-Description:Content-Disposition:
+    Content-Duration:Content-Features:Content-ID:Content-Language:
+    Content-Location:Content-MD5:Content-Transfer-Encoding:Content-Type:
+    MIME-Version;
+    bh=h0TChSzws6gN+taiDZvCsFpex2U5a7F6/d4lPMVIAR8=;
+    b=Q3XHn5E2fmtUAMV6/daCRDzfWUk/3xnD+S3gJ0OAxJN6jREFjbk2i7MuNqsVaR8T15
+    1Oyp+wuVUc1Hy4COAPfdITlZf2iSQqtOYpnjXcl6lbLRdEDzvp4Df3MCjB10CMdvICx+
+    4SH3dnqhdiv+e8tgROj/lQLnE1nFz40EsStKE=
+X-RZG-AUTH: :ImMWcFCkYt99zNSuVPIGZ+UhaRs6aTV9opnpiMPruoT+n4hPYYGXtyOLk3epJDPqAHw4KyY=
+X-RZG-CLASS-ID: mo05
+Received: from [10.0.0.100]
+    by prod_app with esmtp (Exim 4.89 (FreeBSD))
+    (envelope-from <sender@example.com>)
+    id 1eKh0k-000BLN-Co; Fri, 01 Dec 2017 08:49:30 +0000
+Content-Type: text/html; charset="utf-8"
+MIME-Version: 1.0
+Content-Transfer-Encoding: quoted-printable
+From: Some Sender <sender@example.com>
+To: "recipient@example.com" <recipient@example.com>
+Subject: =?utf-8?q?Fake_Subject?=
+Message-Id: <151211814726.13169.7043215661133538432@somehost>
+Date: Fri, 01 Dec 2017 08:49:07 +0000
+Reply-To: Some Sender <reply@example.com>
+X-Originating-IP: 192.1.2.3
+X-Country: code=DE country="Germany" ip=192.1.2.3
+X-ORBS-Accept: dnswl_low
+X-Spam-Checker-Version: vimus Spamcheck Service
+X-Tff-Cgpsa-Version: 1.5
+X-Tff-Cgpsa-Filter: Scanned
+X-Spam-Level: XX
+X-SpamDetect: **: 2.644000 SPF Pass=-0.5, Accept Orbs=-1.0, High tags-to-text ratio=1.8, To: repeats address as real name=1.4, X-Verify-SMTP present=0.9
+X-NotAscii: charset=utf-8
+X-Mash: sameip
+X-LangGuess: English
+X-Encryption: SSL encrypted
+X-IP-stats: Incoming Last 0, First 3041, in=2199, out=0, spam=0 ip=192.1.2.3
+
+--_===122794689====mfe003.mail-gw.net===_--

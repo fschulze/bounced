@@ -61,6 +61,8 @@ def get_recipient(recipient):
     addr_parts = recipient.split(';', 1)
     if len(addr_parts) == 1:
         return email.utils.parseaddr(addr_parts[0])
+    elif len(addr_parts) == 2 and addr_parts[0].lower() == 'local':
+        return email.utils.parseaddr(addr_parts[1])
     elif len(addr_parts) == 2 and addr_parts[0].lower() == 'rfc822':
         return email.utils.parseaddr(addr_parts[1])
     elif len(addr_parts) == 2 and addr_parts[0].lower() == 'x400':

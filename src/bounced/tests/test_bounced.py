@@ -23,6 +23,7 @@ def expected(request):
 def pytest_generate_tests(metafunc):
     if 'bounce_fn' in metafunc.fixturenames:
         paths = [
+            'tests/bounces',
             'tests/flufl_bounce',
             'tests/bounce_email/bounces',
             'tests/bounce_email/non_bounces']
@@ -148,6 +149,9 @@ def test_get_delivery_status(bounce_fn, expected):
         action='delayed',
         status='430',
         reporting_mta='be37.mail.saunalahti.fi')],
+    'local-address': [Bounce(
+        ('', 'recipient@example.com'),
+        status='400')],
     'tt_1234175799': [Bounce(
         ('', 'agris.ameriks@amerimailzzz.lv'),
         status='544',

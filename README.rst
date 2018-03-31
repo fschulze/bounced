@@ -16,6 +16,13 @@ The API of `bounce_email`_ isn't Pythonic and inefficient for several use cases,
 Changelog
 =========
 
+0.2.0 - Unreleased
+------------------
+
+* Support ``local`` recipient kind.
+  [fschulze]
+
+
 0.1.0 - 2018-03-30
 ------------------
 
