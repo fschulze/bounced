@@ -7,7 +7,7 @@ README = open(os.path.abspath('README.rst')).read()
 
 setup(
     name='bounced',
-    version='0.2.0.dev0',
+    version='0.2.0',
     license='MIT',
     description='A library to determine info on bounced email messages',
     long_description="\n\n".join([README]),

@@ -23,7 +23,7 @@ http://www.serversmtp.com/en/smtp-error
 Changelog
 =========
 
-0.2.0 - Unreleased
+0.2.0 - 2018-03-31
 ------------------
 
 * Support ``local`` recipient kind.
