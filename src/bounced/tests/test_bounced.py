@@ -152,6 +152,11 @@ def test_get_delivery_status(bounce_fn, expected):
     'local-address': [Bounce(
         ('', 'recipient@example.com'),
         status='400')],
+    'longer-status': [Bounce(
+        ('', 'joem@example.com'),
+        action='failed',
+        status='5110',
+        reporting_mta='example.com')],
     'tt_1234175799': [Bounce(
         ('', 'agris.ameriks@amerimailzzz.lv'),
         status='544',

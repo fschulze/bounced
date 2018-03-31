@@ -154,9 +154,11 @@ def get_status(field):
         return
     status = field['status'].lower()
     status = status.split(None, 1)
-    status[0] = ''.join(status[0].split('.'))
-    if len(status[0]) != 3:
-        raise ValueError("Malformed Status in DSN field: %s" % field['status'])
+    if '.' in status[0]:
+        status[0] = status[0].split('.')
+        if len(status[0]) != 3:
+            raise ValueError("Malformed Status in DSN field: %s" % field['status'])
+        status[0] = ''.join(status[0])
     if len(status) == 1:
         status.append('')
     if len(status) != 2:
