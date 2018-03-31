@@ -57,7 +57,8 @@ def get_delivery_status(msg):
     return dsn
 
 
-def get_recipient(recipient):
+def get_recipient(field, name):
+    recipient = field[name]
     addr_parts = recipient.split(';', 1)
     if len(addr_parts) == 1:
         return email.utils.parseaddr(addr_parts[0])
@@ -67,7 +68,7 @@ def get_recipient(recipient):
         return email.utils.parseaddr(addr_parts[1])
     elif len(addr_parts) == 2 and addr_parts[0].lower() == 'x400':
         if not addr_parts[1].strip().startswith('/'):
-            raise ValueError("Unknown x400 format for Final-Recipient in DSN field: %s" % recipient)
+            raise ValueError("Unknown x400 format for '%s' in DSN field: %s" % (name, recipient))
         parts = filter(None, addr_parts[1].strip().split('/'))
         parts = list(x.split('=', 1) for x in parts)
         parts = {k.lower(): v for k, v in parts}
@@ -77,10 +78,10 @@ def get_recipient(recipient):
     elif len(addr_parts) == 2 and addr_parts[0].lower() == 'system':
         if addr_parts[1] == '<>':
             return
-        raise ValueError("Unknown kind of Final-Recipient in DSN field: %s" % recipient)
+        raise ValueError("Unknown kind of '%s' in DSN field: %s" % (name, recipient))
     elif len(addr_parts) == 2:
-        raise ValueError("Unknown kind of Final-Recipient in DSN field: %s" % recipient)
-    raise ValueError("Invalid Final-Recipient in DSN field: %s" % recipient)
+        raise ValueError("Unknown kind of '%s' in DSN field: %s" % (name, recipient))
+    raise ValueError("Invalid '%s' in DSN field: %s" % (name, recipient))
 
 
 def get_action(field):
@@ -124,13 +125,13 @@ def get_diagnostic_code(field):
 def get_final_recipient(field):
     if 'final-recipient' not in field:
         return
-    return get_recipient(field['final-recipient'])
+    return get_recipient(field, 'final-recipient')
 
 
 def get_original_recipient(field):
     if 'original-recipient' not in field:
         return
-    return get_recipient(field['original-recipient'])
+    return get_recipient(field, 'original-recipient')
 
 
 def get_reporting_mta(field):
