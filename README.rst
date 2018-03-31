@@ -13,6 +13,13 @@ The API of `bounce_email`_ isn't Pythonic and inefficient for several use cases,
 .. _flufl.bounce: https://pypi.org/project/flufl.bounce/
 .. _bounce_email: https://pypi.org/project/bounce_email/
 
+References
+----------
+
+http://www.serversmtp.com/en/smtp-error
+
+
+
 Changelog
 =========
 
