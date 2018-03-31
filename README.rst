@@ -23,6 +23,11 @@ http://www.serversmtp.com/en/smtp-error
 Changelog
 =========
 
+0.3.0 - Unreleased
+------------------
+
+
+
 0.2.0 - 2018-03-31
 ------------------
 
